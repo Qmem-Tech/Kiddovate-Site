@@ -1,27 +1,27 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        'primary-orange': '#F7AC3D',
-        'primary-blue': '#0077B6',
-        'dark-blue': '#264653',
-        'light-blue': '#69CAFD',
-        'green': '#87D858',
-        'purple': '#A96DFF',
-        'pink': '#AD606D',
+        'k-yellow': '#FFD23F',
+        'k-blue': '#4361EE',
+        'k-orange': '#FF9F1C',
+        'k-pink': '#F72585',
+        'k-white': '#FFFFFF',
+        'k-text': '#2B2D42',
       },
       fontFamily: {
-        andika: ['Andika', 'sans-serif'],
-        poppins: ['Poppins', 'sans-serif'],
+        fredoka: ['Fredoka', 'cursive'],
+        nunito: ['Nunito', 'sans-serif'],
       },
     },
   },
   plugins: [],
-} satisfies Config;
+};
+export default config;
