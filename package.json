@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "caniuse-lite": "^1.0.30001764",
+    "firebase": "^12.13.0",
     "framer-motion": "^11.0.0",
     "lucide-react": "^0.344.0",
     "next": "14.1.0",
@@ -17,6 +18,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@types/json5": "^0.0.30",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
