@@ -291,7 +291,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div onClick={() => window.open('https://www.youtube.com/@kiddovateamharic', '_blank')} className="show-card scroll-reveal rounded-3xl overflow-hidden shadow-lg cursor-pointer group" style={{background: '#F0FFF5'}}>
+            <div onClick={() => window.open('https://www.youtube.com/@KiddovateEthiopia', '_blank')} className="show-card scroll-reveal rounded-3xl overflow-hidden shadow-lg cursor-pointer group" style={{background: '#F0FFF5'}}>
               <div className="relative h-48 sm:h-52 flex items-center justify-center overflow-hidden" style={{background: 'linear-gradient(135deg, #35CE8D, #4ECDC4)'}}>
                 <img src="/image/animal_friends.png" alt="background" className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-500" />
               </div>
@@ -549,7 +549,7 @@ export default function Home() {
         <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
       </svg>
     </a>
-    <a href="https://www.youtube.com/@kiddovateamharic" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform" style={{background: 'rgba(255,255,255,0.1)'}}>
+    <a href="https://www.youtube.com/@KiddovateEthiopia" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform" style={{background: 'rgba(255,255,255,0.1)'}}>
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path>
         <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
