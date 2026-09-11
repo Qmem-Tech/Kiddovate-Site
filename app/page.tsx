@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
@@ -453,7 +454,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="font-heading font-bold text-xl mb-2" style={{color: '#2D1B69'}}>100% Safe</h3>
-              <p className="text-sm" style={{color: '#6B5B95'}}>COPPA compliant with no ads, in-app purchases, or external links. Your child's safety is our #1 priority.</p>
+              <p className="text-sm" style={{color: '#6B5B95'}}>COPPA-minded design with no third-party ads. Parents manage any optional subscription. Your child's safety is our #1 priority.</p>
             </div>
             <div className="scroll-reveal p-6 rounded-3xl shadow-md hover:shadow-lg transition-shadow" style={{background: '#FFF8F0'}}>
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 shadow" style={{background: 'linear-gradient(135deg, #6C5CE7, #A29BFE)'}}>
@@ -535,9 +536,9 @@ export default function Home() {
             <div>
               <h4 className="font-heading font-bold text-sm text-white mb-3">COMPANY</h4>
               <div className="flex flex-col gap-2">
-                <a href="javascript:void(0)" onClick={() => (window as any).openLegalModal('about_us')} className="text-sm hover:text-white transition-colors" style={{color: 'rgba(255,255,255,0.6)'}}>About Us</a>
-                <a href="javascript:void(0)" onClick={() => (window as any).openLegalModal('privacy_policy')} className="text-sm hover:text-white transition-colors" style={{color: 'rgba(255,255,255,0.6)'}}>Privacy Policy</a>
-                <a href="javascript:void(0)" onClick={() => (window as any).openLegalModal('terms_of_service')} className="text-sm hover:text-white transition-colors" style={{color: 'rgba(255,255,255,0.6)'}}>Terms of Service</a>
+                <Link href="/about" className="text-sm hover:text-white transition-colors" style={{color: 'rgba(255,255,255,0.6)'}}>About Us</Link>
+                <Link href="/privacy-policy" className="text-sm hover:text-white transition-colors" style={{color: 'rgba(255,255,255,0.6)'}}>Privacy Policy</Link>
+                <Link href="/terms" className="text-sm hover:text-white transition-colors" style={{color: 'rgba(255,255,255,0.6)'}}>Terms of Service</Link>
               </div>
             </div>
         <div>
@@ -553,13 +554,6 @@ export default function Home() {
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path>
         <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-      </svg>
-    </a>
-    <a href="https://www.instagram.com/kiddovate07/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform" style={{background: 'rgba(255,255,255,0.1)'}}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
       </svg>
     </a>
     <a href="https://www.tiktok.com/@kiddovate" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform" style={{background: 'rgba(255,255,255,0.1)'}}>

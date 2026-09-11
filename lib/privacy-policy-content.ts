@@ -1,3 +1,14 @@
+export type LegalSection = {
+  heading: string;
+  body: string;
+};
+
+export function legalSectionsToFirestoreBody(sections: LegalSection[]): string {
+  return sections
+    .map((section) => `${section.heading}\n\n${section.body}`)
+    .join('\n\n');
+}
+
 export const privacyPolicyContent = {
   title: 'Privacy Policy',
   lastUpdated: 'June 27, 2026',
@@ -48,3 +59,8 @@ export const privacyPolicyContent = {
     },
   ],
 };
+
+/** Paste this into Firestore `app_legal/privacy_policy` as the `body` field. */
+export const privacyPolicyFirestoreBody = legalSectionsToFirestoreBody(
+  privacyPolicyContent.sections
+);
