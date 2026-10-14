@@ -11,15 +11,15 @@ export function legalSectionsToFirestoreBody(sections: LegalSection[]): string {
 
 export const privacyPolicyContent = {
   title: 'Privacy Policy',
-  lastUpdated: 'June 27, 2026',
+  lastUpdated: 'September 11, 2026',
   sections: [
     {
       heading: 'Introduction',
-      body: 'Kiddovate ("we," "our," or "us") is committed to protecting the privacy of children and families who use our mobile application, website, and related services (collectively, the "Services"). This Privacy Policy explains what information we collect, how we use it, and the choices available to parents and guardians.\n\nOur Services are designed for children ages 1–7 and are built with child safety as our top priority. We comply with the Children\'s Online Privacy Protection Act (COPPA) and other applicable privacy laws.',
+      body: 'Kiddovate ("we," "our," or "us") is committed to protecting the privacy of children and families who use our mobile application, website, and related services (collectively, the "Services"). This Privacy Policy explains what information we collect, how we use it, and the choices available to parents and guardians.\n\nOur Services are designed for children ages 1–7 and are built with child safety as our top priority. We take the Children\'s Online Privacy Protection Act (COPPA) and other applicable privacy laws seriously.',
     },
     {
       heading: 'Information We Collect',
-      body: 'We collect only the minimum information needed to provide a safe and enjoyable experience:\n\n• Profile information: A child\'s first name (or nickname) and age range, provided by a parent or guardian during setup.\n• Account information: If a parent creates an account, we may collect an email address for account management and support.\n• Usage data: Basic information about how the app is used (such as which activities are accessed) to improve our content and features.\n• Device information: General device type and operating system version to ensure compatibility and performance.\n• Subscription information: If you purchase a subscription, payment is processed by Apple or Google. We receive confirmation of your subscription status but do not collect or store payment card details.\n\nWe do not collect precise geolocation, contact lists, photos, or other sensitive personal data from children.',
+      body: 'We collect only the minimum information needed to provide a safe and enjoyable experience:\n\n• Profile information: A child\'s first name (or nickname) and age, provided by a parent or guardian during setup.\n• Account information: If a parent creates an account, we may collect an email address and display name for account management and support.\n• Account identifiers: A technical user ID from Firebase, including if you use the app without creating a parent email login.\n• Usage data: Basic information about how the app is used (such as which activities are accessed) so we can improve our content and features. If a parent is signed in, this may be associated with their account email or name.\n• Device information: General device type and operating system version to ensure compatibility and performance.\n• Subscription information: If you purchase a subscription, payment is processed by Apple or Google. We receive confirmation of your subscription status but do not collect or store payment card details.\n• Newsletter information: If you join our website mailing list, we collect the parent name, child\'s name, and email address you enter on that form.\n\nWe do not collect precise geolocation, contact lists, photos, or other sensitive personal data from children.',
     },
     {
       heading: 'How We Use Information',
@@ -31,7 +31,7 @@ export const privacyPolicyContent = {
     },
     {
       heading: 'Children\'s Privacy (COPPA)',
-      body: 'Kiddovate is designed for children and we take COPPA compliance seriously:\n\n• We do not display third-party advertising in our app\n• We do not include external links that could lead children away from the app without parental involvement\n• We do not condition a child\'s participation on providing more personal information than is reasonably necessary\n• Parents and guardians can review, update, or request deletion of their child\'s information at any time by contacting us\n\nWe obtain verifiable parental consent where required before collecting personal information from children under 13.',
+      body: 'Kiddovate is designed for children and we take COPPA compliance seriously:\n\n• We do not display third-party advertising in our app\n• We do not place YouTube, TikTok, or website links inside games or learning activities. Links to our website and social channels appear on parent-facing screens such as Account, About, and Contact\n• We do not condition a child\'s participation on providing more personal information than is reasonably necessary\n• Parents and guardians can review, update, or request deletion of their child\'s information at any time by contacting us or using the in-app account tools\n\nParents and guardians set up the child\'s profile. Where the law requires verifiable parental consent before we collect a child\'s personal information, we will obtain it before doing so.',
     },
     {
       heading: 'Data Security',
@@ -47,7 +47,7 @@ export const privacyPolicyContent = {
     },
     {
       heading: 'Third-Party Links',
-      body: 'Our website may contain links to third-party platforms such as YouTube, Instagram, and TikTok. These links are intended for parents and guardians, not children using the app. We are not responsible for the privacy practices of third-party websites and encourage you to review their privacy policies.',
+      body: 'Our website and parent-facing app screens may contain links to YouTube, TikTok, and www.kiddovate.app. These links are intended for parents and guardians, not for children during play. We are not responsible for the privacy practices of third-party websites and encourage you to review their privacy policies.',
     },
     {
       heading: 'Changes to This Policy',

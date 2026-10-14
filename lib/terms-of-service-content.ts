@@ -2,7 +2,7 @@ import { legalSectionsToFirestoreBody } from './privacy-policy-content';
 
 export const termsOfServiceContent = {
   title: 'Terms of Service',
-  lastUpdated: 'June 27, 2026',
+  lastUpdated: 'September 11, 2026',
   sections: [
     {
       heading: 'Agreement to These Terms',
@@ -30,7 +30,7 @@ export const termsOfServiceContent = {
     },
     {
       heading: 'Third-Party Services',
-      body: 'The Services rely on third parties to operate, including Firebase (Google) for authentication and data storage, RevenueCat for subscription status, and Apple or Google for in-app purchases.\n\nOur website may also link to social platforms such as YouTube, Instagram, and TikTok. Those links are intended for parents and guardians, not for children using the app. We are not responsible for third-party sites or their terms.',
+      body: 'The Services rely on third parties to operate, including Firebase (Google) for authentication and data storage, RevenueCat for subscription status, and Apple or Google for in-app purchases.\n\nOur website and parent-facing app screens may also link to YouTube, TikTok, and www.kiddovate.app. Those links are intended for parents and guardians, not for children during play. We are not responsible for third-party sites or their terms.',
     },
     {
       heading: 'Disclaimers',
