@@ -1,24 +1,42 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import Link from 'next/link';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 
 export default function Home() {
+  const [parentName, setParentName] = useState('');
+  const [kidName, setKidName] = useState('');
+  const [email, setEmail] = useState('');
+  const [joinStatus, setJoinStatus] = useState<'idle' | 'saving' | 'done' | 'error'>('idle');
+
+  async function joinFamily(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const parent = parentName.trim();
+    const kid = kidName.trim();
+    const address = email.trim();
+    if (!parent || !kid || !address) {
+      setJoinStatus('error');
+      return;
+    }
+
+    setJoinStatus('saving');
+    try {
+      await addDoc(collection(db, 'website'), {
+        parentName: parent,
+        kidName: kid,
+        email: address,
+        subscribedAt: serverTimestamp(),
+      });
+      setJoinStatus('done');
+    } catch (error) {
+      console.error('Error adding document: ', error);
+      setJoinStatus('error');
+    }
+  }
+
   useEffect(() => {
-    const firebaseConfig = {
-     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
     const mobileToggle = document.getElementById('mobileToggle');
     const mobileClose = document.getElementById('mobileClose');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -31,54 +49,6 @@ export default function Home() {
     mobileClose?.addEventListener('click', closeMenu);
     mobileOverlay?.addEventListener('click', closeMenu);
     document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
-
-    const newsletterForm = document.getElementById('newsletterForm') as HTMLFormElement;
-    const parentNameInput = document.getElementById('parent-name') as HTMLInputElement;
-    const kidNameInput = document.getElementById('kid-name') as HTMLInputElement;
-    const emailInput = document.getElementById('email-input') as HTMLInputElement;
-    const formMsg = document.getElementById('formMsg');
-    const formError = document.getElementById('formError');
-
-    newsletterForm?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const parentName = parentNameInput?.value.trim();
-      const kidName = kidNameInput?.value.trim();
-      const email = emailInput?.value.trim();
-      
-      if (!parentName || !kidName || !email) {
-        if (formError) {
-          formError.textContent = "❌ Please fill in all fields!";
-          formError.classList.remove('hidden');
-          setTimeout(() => formError.classList.add('hidden'), 4000);
-        }
-        return;
-      }
-      
-      try {
-        const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
-        await addDoc(collection(db, "website"), {
-          parentName: parentName,
-          kidName: kidName,
-          email: email,
-          subscribedAt: serverTimestamp()
-        });
-        
-        if (formMsg) {
-          formMsg.textContent = "✅ Welcome to the Kiddovate family!";
-          formMsg.classList.remove('hidden');
-          setTimeout(() => formMsg.classList.add('hidden'), 5000);
-        }
-        (newsletterForm as HTMLFormElement).reset();
-      } catch (error) {
-        console.error("Error adding document: ", error);
-        if (formError) {
-          formError.textContent = "❌ Error saving. Please try again!";
-          formError.classList.remove('hidden');
-          setTimeout(() => formError.classList.add('hidden'), 5000);
-        }
-      }
-    });
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -496,21 +466,30 @@ export default function Home() {
       </section>
 
       <section className="py-16 sm:py-20 relative overflow-hidden" style={{background: 'linear-gradient(180deg, #FFF0E0, #FFF8F0)'}}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl mb-4" style={{color: '#2D1B69'}}>Join the Kiddovate Family!</h2>
           <p className="text-lg mb-8" style={{color: '#6B5B95'}}>Get free coloring pages, new episode alerts, and parenting tips delivered to your inbox!</p>
-          <form id="newsletterForm" className="flex flex-col gap-4 max-w-lg mx-auto">
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input type="text" id="parent-name" placeholder="Parent Name" required className="flex-1 px-6 py-4 rounded-full text-base border-2 focus:outline-none focus:border-[#FF6B35] font-semibold" style={{borderColor: '#FFD6C0', color: '#2D1B69'}} />
-              <input type="text" id="kid-name" placeholder="Kid's Name" required className="flex-1 px-6 py-4 rounded-full text-base border-2 focus:outline-none focus:border-[#FF6B35] font-semibold" style={{borderColor: '#FFD6C0', color: '#2D1B69'}} />
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input type="email" id="email-input" placeholder="Email address" required className="flex-1 px-6 py-4 rounded-full text-base border-2 focus:outline-none focus:border-[#FF6B35] font-semibold" style={{borderColor: '#FFD6C0', color: '#2D1B69'}} />
-              <button type="submit" className="px-8 py-4 rounded-full font-bold text-white text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap" style={{background: 'linear-gradient(135deg, #FF6B35, #FF8F65)'}}>Join Family</button>
-            </div>
-          </form>
-          <div id="formMsg" className="mt-4 font-bold text-sm hidden" style={{color: '#35CE8D'}}></div>
-          <div id="formError" className="mt-4 font-bold text-sm hidden" style={{color: '#FF6B35'}}></div>
+          {joinStatus === 'done' ? (
+            <p role="status" className="max-w-lg mx-auto rounded-3xl px-6 py-5 font-bold text-lg" style={{background: '#F0FFF5', color: '#2D1B69'}}>
+              You&apos;re in. Welcome to the Kiddovate family.
+            </p>
+          ) : (
+            <form id="newsletterForm" onSubmit={joinFamily} className="flex flex-col gap-4 max-w-lg mx-auto">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input type="text" id="parent-name" name="parentName" value={parentName} onChange={(event) => setParentName(event.target.value)} placeholder="Parent Name" required autoComplete="name" className="flex-1 px-6 py-4 rounded-full text-base border-2 focus:outline-none focus:border-[#FF6B35] font-semibold" style={{borderColor: '#FFD6C0', color: '#2D1B69'}} />
+                <input type="text" id="kid-name" name="kidName" value={kidName} onChange={(event) => setKidName(event.target.value)} placeholder="Kid's Name" required className="flex-1 px-6 py-4 rounded-full text-base border-2 focus:outline-none focus:border-[#FF6B35] font-semibold" style={{borderColor: '#FFD6C0', color: '#2D1B69'}} />
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input type="email" id="email-input" name="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Email address" required autoComplete="email" className="flex-1 px-6 py-4 rounded-full text-base border-2 focus:outline-none focus:border-[#FF6B35] font-semibold" style={{borderColor: '#FFD6C0', color: '#2D1B69'}} />
+                <button type="submit" disabled={joinStatus === 'saving'} className="px-8 py-4 rounded-full font-bold text-base shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap disabled:opacity-70" style={{background: 'linear-gradient(135deg, #FF6B35, #FF8F65)', color: '#2D1B69'}}>
+                  {joinStatus === 'saving' ? 'Joining...' : 'Join Family'}
+                </button>
+              </div>
+              {joinStatus === 'error' && (
+                <p role="alert" className="font-bold text-sm" style={{color: '#D92D20'}}>We couldn&apos;t save that. Check the fields and try again.</p>
+              )}
+            </form>
+          )}
         </div>
       </section>
 
