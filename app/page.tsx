@@ -3,6 +3,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { addDoc, collection, doc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { trackStoreClick } from '@/lib/analytics';
 import { db } from '@/lib/firebase';
 
 export default function Home() {
@@ -205,7 +206,7 @@ export default function Home() {
                 Join millions of happy kids exploring songs, stories, and adventures with Kiddovate's lovable characters!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center slide-up stagger-3">
-                <a href="https://apps.apple.com/us/app/kiddovate/id6757329788" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-4 px-8 py-4 rounded-full text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all pulse-glow" style={{background: 'linear-gradient(135deg, #FF6B35, #FF8F65)'}}>
+                <a href="https://apps.apple.com/us/app/kiddovate/id6757329788" target="_blank" rel="noopener noreferrer" onClick={() => trackStoreClick('app_store', 'hero')} className="inline-flex items-center gap-4 px-8 py-4 rounded-full text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all pulse-glow" style={{background: 'linear-gradient(135deg, #FF6B35, #FF8F65)'}}>
                   <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" fill="#ffffff" />
                   </svg>
@@ -214,7 +215,7 @@ export default function Home() {
                     <div className="text-lg font-bold leading-tight">App Store</div>
                   </div>
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.kiddovate.web" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-4 px-8 py-4 rounded-full border-2 hover:scale-105 transition-all" style={{color: '#FF6B35', borderColor: '#FF6B35', background: 'rgba(255,107,53,0.06)'}}>
+                <a href="https://play.google.com/store/apps/details?id=com.kiddovate.web" target="_blank" rel="noopener noreferrer" onClick={() => trackStoreClick('play_store', 'hero')} className="inline-flex items-center gap-4 px-8 py-4 rounded-full border-2 hover:scale-105 transition-all" style={{color: '#FF6B35', borderColor: '#FF6B35', background: 'rgba(255,107,53,0.06)'}}>
                   <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M3.61 1.81L13.42 12 3.61 22.19c-.36-.39-.61-.93-.61-1.56V3.37c0-.63.25-1.17.61-1.56zM14.55 13.12l2.66 2.66-8.42 4.78 5.76-7.44zM17.92 10.93l2.29 1.3c.56.32.56 1.23 0 1.54l-2.29 1.3-2.87-2.07 2.87-2.07zM8.79 3.44l8.42 4.78-2.66 2.66-5.76-7.44z" fill="#FF6B35" />
                   </svg>
@@ -375,7 +376,7 @@ export default function Home() {
               <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-4">Download Our App</h2>
               <p className="text-lg mb-8" style={{color: 'rgba(255,255,255,0.8)'}}>Fun learning games, sing-along songs, bedtime stories, and educational activities — all in one safe, ad-free app designed just for kids!</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-  <a href="https://apps.apple.com/us/app/kiddovate/id6757329788" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-white hover:scale-105 transition-transform shadow-lg">
+  <a href="https://apps.apple.com/us/app/kiddovate/id6757329788" target="_blank" rel="noopener noreferrer" onClick={() => trackStoreClick('app_store', 'download')} className="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-white hover:scale-105 transition-transform shadow-lg">
     <svg width="28" height="28" viewBox="0 0 24 24">
       <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" fill="#333" />
     </svg>
@@ -384,7 +385,7 @@ export default function Home() {
       <div className="text-base font-bold" style={{color: '#2D1B69'}}>App Store</div>
     </div>
   </a>
-  <a href="https://play.google.com/store/apps/details?id=com.kiddovate.web" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-white hover:scale-105 transition-transform shadow-lg">
+  <a href="https://play.google.com/store/apps/details?id=com.kiddovate.web" target="_blank" rel="noopener noreferrer" onClick={() => trackStoreClick('play_store', 'download')} className="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-white hover:scale-105 transition-transform shadow-lg">
     <svg width="28" height="28" viewBox="0 0 24 24">
       <path d="M3.61 1.81L13.42 12 3.61 22.19c-.36-.39-.61-.93-.61-1.56V3.37c0-.63.25-1.17.61-1.56zM14.55 13.12l2.66 2.66-8.42 4.78 5.76-7.44zM17.92 10.93l2.29 1.3c.56.32.56 1.23 0 1.54l-2.29 1.3-2.87-2.07 2.87-2.07zM8.79 3.44l8.42 4.78-2.66 2.66-5.76-7.44z" fill="#333" />
     </svg>

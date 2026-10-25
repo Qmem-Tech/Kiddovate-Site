@@ -27,7 +27,7 @@ export const privacyPolicyContent = {
     },
     {
       heading: 'Information Sharing',
-      body: 'We do not sell, rent, or trade personal information — especially children\'s information — to third parties.\n\nWe may share limited data with trusted service providers who help us operate our Services, such as:\n\n• Firebase (Google) — authentication, database, and cloud storage\n• RevenueCat — subscription management\n• Apple App Store and Google Play — in-app purchase processing\n\nThese providers are contractually required to protect your data and may only use it to perform services on our behalf.',
+      body: 'We do not sell, rent, or trade personal information — especially children\'s information — to third parties.\n\nWe may share limited data with trusted service providers who help us operate our Services, such as:\n\n• Firebase (Google) — authentication, database, and cloud storage\n• Google Analytics — visits and button clicks on the parent website, including App Store and Google Play links. This is not used inside the children's app\n• RevenueCat — subscription management\n• Apple App Store and Google Play — in-app purchase processing\n\nThese providers are contractually required to protect your data and may only use it to perform services on our behalf.',
     },
     {
       heading: 'Children\'s Privacy (COPPA)',
