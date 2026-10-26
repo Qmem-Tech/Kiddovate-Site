@@ -2,7 +2,10 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
 
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const rawGaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
+const gaMeasurementId = rawGaId
+    ? (rawGaId.startsWith('G-') ? rawGaId : `G-${rawGaId}`)
+    : undefined;
 
 export const metadata: Metadata = {
     title: 'Kiddovate - Playful Learning for Kids',
