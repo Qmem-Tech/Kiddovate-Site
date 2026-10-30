@@ -145,15 +145,16 @@ export default function Home() {
                 <img src="/image/app_logo.png" alt="Kiddovate Logo" className="w-full h-full object-cover" />
               </div>
             </a>
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
               <a href="#shows" className="nav-link font-semibold text-sm tracking-wide" style={{color: '#2D1B69'}}>SHOWS</a>
               <a href="#characters" className="nav-link font-semibold text-sm tracking-wide" style={{color: '#2D1B69'}}>CHARACTERS</a>
               <a href="#learn" className="nav-link font-semibold text-sm tracking-wide" style={{color: '#2D1B69'}}>LEARN</a>
               <a href="#app" className="nav-link font-semibold text-sm tracking-wide" style={{color: '#2D1B69'}}>APP</a>
               <a href="#parents" className="nav-link font-semibold text-sm tracking-wide" style={{color: '#2D1B69'}}>PARENTS</a>
+              <a href="https://kiddovate.store" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-full font-bold text-sm border-2 hover:scale-105 transition-all" style={{color: '#FF6B35', borderColor: '#FF6B35', background: 'rgba(255,107,53,0.06)'}}>Shop</a>
               <a href="https://www.youtube.com/@kiddovate07" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-full font-bold text-white text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all" style={{background: 'linear-gradient(135deg, #FF6B35, #FF8F65)'}}>Watch Now ▶</a>
             </div>
-            <button id="mobileToggle" className="md:hidden p-2 rounded-xl" style={{color: '#FF6B35'}} aria-label="Open menu">
+            <button id="mobileToggle" className="lg:hidden p-2 rounded-xl" style={{color: '#FF6B35'}} aria-label="Open menu">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -179,7 +180,8 @@ export default function Home() {
           <a href="#learn" className="mobile-link font-heading font-bold text-xl py-2" style={{color: '#2D1B69'}}>📚 Learn</a>
           <a href="#app" className="mobile-link font-heading font-bold text-xl py-2" style={{color: '#2D1B69'}}>📱 App</a>
           <a href="#parents" className="mobile-link font-heading font-bold text-xl py-2" style={{color: '#2D1B69'}}>👨‍👩‍👧 Parents</a>
-          <a href="https://www.youtube.com/@kiddovate07" target="_blank" rel="noopener noreferrer" className="mt-4 px-6 py-3 rounded-full font-bold text-white text-center shadow-lg" style={{background: 'linear-gradient(135deg, #FF6B35, #FF8F65)'}}>Watch Free ▶</a>
+          <a href="https://kiddovate.store" target="_blank" rel="noopener noreferrer" className="mobile-link mt-4 px-6 py-3 rounded-full font-bold text-center border-2" style={{color: '#2D1B69', borderColor: '#2D1B69', background: 'rgba(255,255,255,0.55)'}}>Shop the store</a>
+          <a href="https://www.youtube.com/@kiddovate07" target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-full font-bold text-white text-center shadow-lg" style={{background: 'linear-gradient(135deg, #FF6B35, #FF8F65)'}}>Watch Free ▶</a>
         </div>
       </div>
       <div id="mobileOverlay" className="fixed inset-0 z-[55] bg-black bg-opacity-30 hidden"></div>
@@ -414,6 +416,37 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="shop" className="py-16 sm:py-20 relative overflow-hidden" style={{background: 'linear-gradient(180deg, #FFF0E0, #FFF8F0)'}}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 scroll-reveal">
+            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl" style={{color: '#2D1B69'}}>The Kiddovate Shop</h2>
+            <p className="text-lg mt-4 max-w-2xl mx-auto" style={{color: '#6B5B95'}}>Plush toys, games, puzzles, and craft kits from the Kiddovate store.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {[
+              { title: 'Plush & fidget fun', desc: 'Soft toys and fidget games from the shop.', img: '/image/shop-plush.jpg', href: 'https://kiddovate.store/collections/plush-toys-sensory-fidget-fun', bg: '#FFF5EE' },
+              { title: 'Games & puzzles', desc: 'Board games, chess, and puzzles.', img: '/image/shop-games.jpg', href: 'https://kiddovate.store/collections/board-games-chess-and-puzzles', bg: '#F0F5FF' },
+              { title: 'Crafts & kits', desc: 'Arts, crafts, and activity kits.', img: '/image/shop-crafts.jpg', href: 'https://kiddovate.store/collections/arts-crafts-and-diy-activity-kits', bg: '#F0FFF5' },
+            ].map((item) => (
+              <a key={item.href} href={item.href} target="_blank" rel="noopener noreferrer" className="show-card scroll-reveal rounded-3xl overflow-hidden shadow-lg group block" style={{background: item.bg}}>
+                <div className="relative h-48 sm:h-52 overflow-hidden">
+                  <img src={item.img} alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-heading font-bold text-xl mb-1" style={{color: '#2D1B69'}}>{item.title}</h3>
+                  <p className="text-sm" style={{color: '#6B5B95'}}>{item.desc}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <a href="https://kiddovate.store" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all" style={{background: 'linear-gradient(135deg, #FF6B35, #FF8F65)'}}>
+              Visit the shop →
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section id="parents" className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-reveal">
@@ -513,6 +546,7 @@ export default function Home() {
                 <a href="#characters" className="text-sm hover:text-white transition-colors" style={{color: 'rgba(255,255,255,0.6)'}}>Characters</a>
                 <a href="#learn" className="text-sm hover:text-white transition-colors" style={{color: 'rgba(255,255,255,0.6)'}}>Learning</a>
                 <a href="#app" className="text-sm hover:text-white transition-colors" style={{color: 'rgba(255,255,255,0.6)'}}>App</a>
+                <a href="https://kiddovate.store" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors" style={{color: 'rgba(255,255,255,0.6)'}}>Shop</a>
               </div>
             </div>
             <div>
